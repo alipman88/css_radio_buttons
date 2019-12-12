@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSS radio buttons & "reverse" highlighting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//getskeleton.com/dist/css/normalize.css">
+  <link rel="stylesheet" href="//getskeleton.com/dist/css/skeleton.css">
+  <link rel="stylesheet" href="//getskeleton.com/css/custom.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <style>
+    .container { margin: auto; max-width: 960; }
+    .center { text-align: center; }
+
+    .radio {
+      display: inline-block; width: 150px; vertical-align: top; }
+    .radio img {
+      height: 100px; width: 100px; border: 4px solid #CCC; -webkit-filter: grayscale(100%); filter: grayscale(100%); }
+    .radio img,
+    .radio .radio-label {
+      cursor: pointer; }
+    .radio > div + input[type=radio],
+    input.placeholder[type=radio] {
+      display: none; }
+    input[type=text][name=write_in] {
+      width: 150px; border: 4px solid #CCC; }
+    .radio > input[type=radio]:checked + label img,
+    .radio > input[type=radio]:checked + label > input[type=text] {
+      border-color: darkorange; -webkit-filter: grayscale(0%); filter: grayscale(0%); }
+    input.placeholder[type=radio]:checked ~ .radio img {
+      -webkit-filter: grayscale(0%); filter: grayscale(0%); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="center">Who is your top choice in the 2020 Democratic Presidential Primary?</h1>
+
+    <div class="center">
+      <input type="radio" name="top_choice" class="placeholder" checked />
+
+      <div class="radio"><div></div>
+        <input id="Joe Biden" type="radio" name="top_choice" value="Joe Biden" />
+        <label for="Joe Biden">
+          <div><img src="images/joe_biden.jpg" /></div>
+          <div class="radio-label">Joe Biden</div>
+        </label>
+      </div>
+
+      <div class="radio"><div></div>
+        <input id="Pete Buttigieg" type="radio" name="top_choice" value="Pete Buttigieg" />
+        <label for="Pete Buttigieg">
+          <div><img src="images/pete_buttigieg.jpg" /></div>
+          <div class="radio-label">Pete Buttigieg</div>
+        </label>
+      </div>
+
+      <div class="radio"><div></div>
+        <input id="Kamala Harris" type="radio" name="top_choice" value="Kamala Harris" />
+        <label for="Kamala Harris">
+          <div><img src="images/kamala_harris.jpg" /></div>
+          <div class="radio-label">Kamala Harris</div>
+        </label>
+      </div>
+
+      <div class="radio"><div></div>
+        <input id="Bernie Sanders" type="radio" name="top_choice" value="Bernie Sanders" />
+        <label for="Bernie Sanders">
+          <div><img src="images/bernie_sanders.jpg" /></div>
+          <div class="radio-label">Bernie Sanders</div>
+        </label>
+      </div>
+
+      <div class="radio"><div></div>
+        <input id="Elizabeth Warren" type="radio" name="top_choice" value="Elizabeth Warren" />
+        <label for="Elizabeth Warren">
+          <div><img src="images/elizabeth_warren.jpg" /></div>
+          <div class="radio-label">Elizabeth Warren</div>
+        </label>
+      </div>
+    </div>
+
+    <br/>
+
+    <div class="center">
+      <div class="radio"><div></div>
+        <input id="write_in" type="radio" name="top_choice" value="" />
+        <label for="write_in" class="radio-label" onclick="$(this).closest('.radio').find('input[type=text]').focus()">
+          <div>Write In</div>
+          <input type="text" name="write_in" class="write_in" onclick="$(this).closest('.radio').find('input[type=radio]').prop('checked', true);" />
+        </label>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
